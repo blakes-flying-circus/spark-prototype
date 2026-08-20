@@ -325,21 +325,27 @@ h2 {
 .time-setting {
   margin-top: 6px;
   padding: 14px 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 132px;
   align-items: center;
-  justify-content: space-between;
-  gap: 18px;
+  gap: 14px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
+.time-setting > span {
+  min-width: 0;
+}
+
 .time-setting input {
-  width: 91px;
-  padding: 9px 7px;
+  width: 132px;
+  min-width: 132px;
+  padding: 9px 10px;
   border: 1px solid var(--line);
   border-radius: 10px;
   color: var(--ink);
   background: var(--surface-raised);
+  color-scheme: light;
 }
 
 .primary-button {
