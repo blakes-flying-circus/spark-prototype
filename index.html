@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A click-through prototype for Spark, a quiet daily intention practice."
+    />
+    <title>Spark — Daily intention prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="prototype-stage">
+      <div class="prototype-meta" aria-label="Prototype controls">
+        <div>
+          <span class="prototype-label">Interactive prototype</span>
+          <span class="prototype-note">No data is saved or sent.</span>
+        </div>
+        <button class="restart-button" type="button" data-restart>Start over</button>
+      </div>
+
+      <article class="phone" aria-label="Spark mobile prototype">
+        <div class="status-bar" aria-hidden="true">
+          <span>9:00</span>
+          <span class="status-icons">● ᴡɪꜰɪ ▰</span>
+        </div>
+
+        <header class="app-header">
+          <a class="brand" href="?screen=setup" aria-label="Spark home">
+            <span class="brand-mark" aria-hidden="true">✦</span>
+            <span>Spark</span>
+          </a>
+          <span class="day-marker">A moment for today</span>
+        </header>
+
+        <div class="screen-stack" aria-live="polite">
+          <section class="screen" data-screen="setup" aria-labelledby="setup-title">
+            <div class="screen-copy intro-copy">
+              <span class="eyebrow">A quiet daily practice</span>
+              <h1 id="setup-title">Meet the day on your terms.</h1>
+              <p>
+                Choose one intention in under a minute. No streaks, scores, or missed-day messages.
+              </p>
+            </div>
+
+            <fieldset class="setting-group">
+              <legend>Would a gentle reminder help?</legend>
+              <label class="setting-option is-selected">
+                <input type="radio" name="reminder" value="yes" checked />
+                <span>
+                  <strong>Yes, once a day</strong>
+                  <small>Quiet by default. Change it anytime.</small>
+                </span>
+                <span class="check" aria-hidden="true">✓</span>
+              </label>
+              <label class="setting-option">
+                <input type="radio" name="reminder" value="no" />
+                <span>
+                  <strong>No reminder</strong>
+                  <small>I’ll come to Spark on my own.</small>
+                </span>
+                <span class="check" aria-hidden="true">✓</span>
+              </label>
+            </fieldset>
+
+            <label class="time-setting">
+              <span>
+                <strong>Morning cue</strong>
+                <small>Start with a time that fits your routine.</small>
+              </span>
+              <input type="time" value="09:00" aria-label="Preferred reminder time" />
+            </label>
+
+            <button class="primary-button" type="button" data-go="today">Begin</button>
+          </section>
+
+          <section class="screen" data-screen="today" aria-labelledby="today-title" hidden>
+            <div class="screen-copy">
+              <span class="eyebrow">Wednesday, August 20</span>
+              <h1 id="today-title">How do you want to meet today?</h1>
+              <p>Choose the one that feels most useful right now.</p>
+            </div>
+
+            <div class="intention-list" role="group" aria-label="Today’s intentions">
+              <button class="intention" type="button" data-intention="I’ll stay open today, even when it’s easier to shut down.">
+                <span>I’ll stay open today, even when it’s easier to shut down.</span>
+                <span aria-hidden="true">→</span>
+              </button>
+              <button class="intention" type="button" data-intention="I’ll notice when I’m reaching for control.">
+                <span>I’ll notice when I’m reaching for control.</span>
+                <span aria-hidden="true">→</span>
+              </button>
+              <button class="intention" type="button" data-intention="I’ll let today be ordinary.">
+                <span>I’ll let today be ordinary.</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <button class="text-button" type="button" data-go="setup">Not today</button>
+          </section>
+
+          <section class="screen confirmation-screen" data-screen="selected" aria-labelledby="selected-title" hidden>
+            <div class="confirmation-mark" aria-hidden="true">✦</div>
+            <div class="screen-copy centered-copy">
+              <span class="eyebrow">Your intention is set</span>
+              <h1 id="selected-title">Carry this with you.</h1>
+            </div>
+
+            <blockquote class="chosen-intention" data-selected-quote>
+              “I’ll notice when I’m reaching for control.”
+            </blockquote>
+
+            <p class="quiet-note">Nothing to complete. Nothing to protect.</p>
+            <button class="primary-button" type="button" data-go="reflect">Done</button>
+            <button class="text-button" type="button">Open journal</button>
+          </section>
+
+          <section class="screen" data-screen="reflect" aria-labelledby="reflect-title" hidden>
+            <div class="yesterday-card">
+              <span class="eyebrow">Yesterday</span>
+              <p>“I’ll notice when I’m reaching for control.”</p>
+            </div>
+
+            <div class="screen-copy reflection-copy">
+              <h1 id="reflect-title">What do you notice now?</h1>
+              <p>This is optional. There is no right answer.</p>
+            </div>
+
+            <div class="reflection-options" role="group" aria-label="Reflection options">
+              <button type="button" data-reflection>It stayed with me</button>
+              <button type="button" data-reflection>I lost track of it</button>
+              <button type="button" data-reflection>I’d rather not say</button>
+            </div>
+
+            <div class="today-reveal" data-today-reveal hidden>
+              <span class="eyebrow">Today</span>
+              <h2>Ready for a new intention?</h2>
+              <button class="primary-button" type="button" data-go="today">Choose today’s</button>
+            </div>
+          </section>
+        </div>
+
+        <footer class="progress" aria-label="Prototype progress">
+          <span data-progress="setup" class="is-active"></span>
+          <span data-progress="today"></span>
+          <span data-progress="selected"></span>
+          <span data-progress="reflect"></span>
+        </footer>
+      </article>
+
+      <p class="prototype-hint">Click through the phone to explore the four-state flow.</p>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
