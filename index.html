@@ -13,11 +13,15 @@
   <body>
     <main class="prototype-stage">
       <div class="prototype-meta" aria-label="Prototype controls">
-        <div>
+        <div class="prototype-context">
           <span class="prototype-label">Interactive prototype</span>
           <span class="prototype-note">No data is saved or sent.</span>
         </div>
         <button class="restart-button" type="button" data-restart>Start over</button>
+        <nav class="flow-switcher" aria-label="Choose prototype flow">
+          <a href="?flow=daily&amp;screen=today" data-flow-link="daily">Core daily flow</a>
+          <a href="?flow=setup&amp;screen=setup" data-flow-link="setup">First-time setup</a>
+        </nav>
       </div>
 
       <article class="phone" aria-label="Spark mobile prototype">
@@ -27,7 +31,7 @@
         </div>
 
         <header class="app-header">
-          <a class="brand" href="?screen=setup" aria-label="Spark home">
+          <a class="brand" href="?flow=daily&amp;screen=today" aria-label="Spark daily flow">
             <span class="brand-mark" aria-hidden="true">✦</span>
             <span>Spark</span>
           </a>
@@ -97,7 +101,10 @@
               </button>
             </div>
 
-            <button class="text-button" type="button" data-go="setup">Not today</button>
+            <button class="text-button" type="button" data-skip-today>Not today</button>
+            <p class="skip-note" data-skip-note role="status" hidden>
+              Nothing to catch up on. Come back when it feels useful.
+            </p>
           </section>
 
           <section class="screen confirmation-screen" data-screen="selected" aria-labelledby="selected-title" hidden>
@@ -112,7 +119,8 @@
             </blockquote>
 
             <p class="quiet-note">Nothing to complete. Nothing to protect.</p>
-            <button class="primary-button" type="button" data-go="reflect">Done</button>
+            <span class="demo-shortcut-label">Prototype shortcut</span>
+            <button class="primary-button" type="button" data-go="reflect">Preview the next visit</button>
             <button class="text-button" type="button">Open journal</button>
           </section>
 
@@ -149,7 +157,9 @@
         </footer>
       </article>
 
-      <p class="prototype-hint">Click through the phone to explore the four-state flow.</p>
+      <p class="prototype-hint" data-flow-hint>
+        The core daily flow starts at today’s intention. First-time setup remains available above.
+      </p>
     </main>
     <script src="app.js"></script>
   </body>

@@ -65,10 +65,10 @@ input:focus-visible {
 
 .prototype-meta {
   width: min(100%, 420px);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  gap: 12px 20px;
   color: var(--ink-muted);
   font-size: 0.75rem;
 }
@@ -99,6 +99,32 @@ input:focus-visible {
 .restart-button {
   padding: 8px 0;
   white-space: nowrap;
+}
+
+.flow-switcher {
+  grid-column: 1 / -1;
+  padding: 4px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  border: 1px solid rgba(37, 52, 46, 0.16);
+  border-radius: 12px;
+  background: rgba(255, 253, 248, 0.5);
+}
+
+.flow-switcher a {
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--ink-muted);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
+.flow-switcher a.is-active {
+  color: var(--surface-raised);
+  background: var(--green-dark);
+  box-shadow: 0 3px 9px rgba(46, 80, 64, 0.16);
 }
 
 .phone {
@@ -373,6 +399,14 @@ h2 {
   margin-top: 8px;
 }
 
+.skip-note {
+  margin: 18px 0 0;
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
 .intention-list {
   display: grid;
   gap: 13px;
@@ -456,7 +490,17 @@ h2 {
 }
 
 .confirmation-screen .primary-button {
-  margin-top: 34px;
+  margin-top: 8px;
+}
+
+.demo-shortcut-label {
+  margin-top: 28px;
+  color: var(--ink-muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .yesterday-card {
@@ -539,6 +583,10 @@ h2 {
   background: var(--green);
 }
 
+.phone[data-flow="daily"] [data-progress="setup"] {
+  display: none;
+}
+
 .prototype-hint {
   margin: 0;
   color: var(--ink-muted);
@@ -553,18 +601,38 @@ h2 {
   .prototype-stage {
     min-height: 100svh;
     padding: 0;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
-  .prototype-meta,
+  .prototype-meta {
+    width: 100%;
+    padding: 8px 12px;
+    grid-template-columns: 1fr auto;
+    gap: 0 12px;
+    background: var(--page);
+  }
+
+  .prototype-context,
   .prototype-hint {
     display: none;
   }
 
+  .flow-switcher {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .restart-button {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
   .phone {
     width: 100%;
-    height: 100svh;
-    min-height: 700px;
+    height: calc(100svh - 53px);
+    min-height: 650px;
     border: 0;
     border-radius: 0;
     box-shadow: none;
